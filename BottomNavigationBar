@@ -1,0 +1,83 @@
+import Foundation
+import UIKit
+
+public class BottomNavigationBar : UITabBarController, UITabBarControllerDelegate{
+  
+  // Array of string to store UINavigationController type; it will be used to set self.viewControllers
+  
+  // View
+  fileprivate var _tabView : UINavigationController?
+  fileprivate var _viewControllers : [UINavigationController?] = []
+  // fileprivate var navCon : UINavigationController = (ReplForm.activeForm?.navigationController)!
+  
+  // Tab Bar
+  fileprivate var _tabBarBackgroundColor : UIColor?
+  fileprivate var _tabBarOpacity : Float = 1
+  fileprivate var _tabBarIsHidden : Bool = false
+  fileprivate var  _allowSelection : Bool = true
+  fileprivate var _selectedIndex : Int = 0
+  
+  // Tab Bar Item
+  fileprivate var _selectedItemColor : UIColor?
+  fileprivate var _unselectedItemColor : UIColor?
+  fileprivate var _badgeColor : UIColor?
+  fileprivate var _barItemBagde : String?
+  fileprivate var _barItemIsSelectable : Bool = true
+  fileprivate var _barItemImage : UIImage?
+  fileprivate var _barItemTitle : String = ""
+  
+  // Navigation Bar
+  fileprivate var _navBarIsHidden : Bool = false
+  fileprivate var _navBarBackgroundColor : UIColor?
+  fileprivate var _navBarBorderWidth : Double = 0
+  fileprivate var _navBarBorderCornerRadius : Double = 0
+  fileprivate var _navBarBorderColor : UIColor?
+  
+  
+  override public func viewDidLoad(){
+    super.viewDidLoad()
+    self.delegate = self
+  }
+  
+  @objc var TabBarOpacity: Float {
+    get {
+      return _tabBarOpacity
+    }
+    set(opacity) {
+      _tabBarOpacity = opacity
+      self.tabBar.layer.opacity = _tabBarOpacity
+    }
+    
+  }
+    
+  @objc var HideTabBar: Bool {
+    get {
+      return _tabBarIsHidden
+    }
+    set(hidden) {
+      _tabBarIsHidden = hidden
+      self.tabBar.isHidden = hidden
+    }
+  }
+      
+  @objc var AllowSelection: Bool {
+    get {
+          return _allowSelection
+        }
+    set(allowSelection) {
+          _allowSelection = allowSelection
+        }
+  }
+  
+  public func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+      return AllowSelection
+  }
+  
+  public func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+    
+  }
+  
+  /*
+   
+   */
+}
